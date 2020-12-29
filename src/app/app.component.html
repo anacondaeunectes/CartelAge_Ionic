@@ -2,28 +2,49 @@
   <ion-split-pane contentId="main-content">
     <ion-menu contentId="main-content" type="overlay">
       <ion-content>
-        <ion-list id="inbox-list">
-          <ion-list-header>Inbox</ion-list-header>
-          <ion-note>hi@ionicframework.com</ion-note>
 
-          <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages; let i = index">
-            <ion-item (click)="selectedIndex = i" routerDirection="root" [routerLink]="[p.url]" lines="none" detail="false" [class.selected]="selectedIndex == i">
-              <ion-icon slot="start" [ios]="p.icon + '-outline'" [md]="p.icon + '-sharp'"></ion-icon>
-              <ion-label>{{ p.title }}</ion-label>
+        <ion-list id="inbox-list">
+          <ion-list-header>CartelAge</ion-list-header>
+          <ion-note>{{ userName }}</ion-note>
+
+          <ion-menu-toggle auto-hide="false" *ngFor="let tab of tabs; let i = index">
+            <ion-item (click)="selectedIndex = i" routerDirection="root" [routerLink]="[tab.url]" lines="none" detail="false" [class.selected]="selectedIndex == i">
+              <ion-icon slot="start" [ios]="tab.icon" [md]="tab.icon"></ion-icon>
+              <ion-label>{{ tab.title }}</ion-label>
             </ion-item>
           </ion-menu-toggle>
         </ion-list>
 
         <ion-list id="labels-list">
-          <ion-list-header>Labels</ion-list-header>
 
-          <ion-item *ngFor="let label of labels" lines="none">
-            <ion-icon slot="start" ios="bookmark-outline" md="bookmark-sharp"></ion-icon>
-            <ion-label>{{ label }}</ion-label>
-          </ion-item>
-        </ion-list>
+          
+          <ion-item *ngIf="authService.user | async as user; else login" (click)="authService.logout()" routerDirection="root"  lines="none" detail="false">
+            <ion-icon slot="start" ios="log-out-outline" md="log-out-outline"></ion-icon>
+            <ion-label>Cerrar sesión</ion-label>
+          </ion-item> 
+
+        
+
+          <ng-template #login>
+            
+            <ion-item (click)="authService.loginGoogle()" routerDirection="root"  lines="none" detail="false" >
+              <ion-icon slot="start" ios="log-in-outline" md="log-in-outline"></ion-icon>
+              <ion-label>Iniciar sesión</ion-label>
+            </ion-item>
+           
+          </ng-template>
+          
+        </ion-list>      
+
       </ion-content>
     </ion-menu>
     <ion-router-outlet id="main-content"></ion-router-outlet>
   </ion-split-pane>
 </ion-app>
+
+
+<!-- <ion-app>
+
+  <ion-router-outlet id="main-content"></ion-router-outlet>
+  <app-film-short-card></app-film-short-card>
+</ion-app> -->

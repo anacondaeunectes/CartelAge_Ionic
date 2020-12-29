@@ -1,0 +1,15 @@
+<ion-item lines="full">
+
+  <ion-thumbnail id="test" slot="start"> 
+    <img [src]="img_src">
+  </ion-thumbnail>
+
+  <ion-label>
+    <span>{{film.title}}</span>
+  </ion-label>
+
+  <svg height="23" width="23" class="shortCard_Fav" (click)="switchFav()" [ngStyle]="{'fill': film.isFav == true ? 'orange' : '#c4c4c4'}">
+    <polygon points="9.9, 1.1, 3.3, 21.78, 19.8, 8.58, 0, 8.58, 16.5, 21.78"/>
+  </svg>
+
+</ion-item>
