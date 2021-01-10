@@ -17,6 +17,8 @@ import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { environment } from 'src/environments/environment';
 import { FormsModule } from '@angular/forms';
 
+import { GooglePlus } from '@ionic-native/google-plus/ngx';
+
 
 @NgModule({
   declarations: [
@@ -35,6 +37,7 @@ import { FormsModule } from '@angular/forms';
     FormsModule
   ],
   providers: [
+    GooglePlus,
     StatusBar,
     SplashScreen,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }

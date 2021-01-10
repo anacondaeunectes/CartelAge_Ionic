@@ -1,5 +1,7 @@
 {
   "name": "cartelAge_Ionic",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }
